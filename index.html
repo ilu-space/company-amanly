@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amanly — Your family's digital safety, connected.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #1B6B4A;
+    --green-dark: #144f37;
+    --green-light: #e8f4ef;
+    --amber: #F4A623;
+    --amber-light: #fef6e7;
+    --text: #1a1a2e;
+    --muted: #5a6475;
+    --border: #e2e8f0;
+    --white: #ffffff;
+    --bg: #fafaf8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-mark {
+    width: 36px;
+    height: 36px;
+    background: var(--green);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -1px;
+  }
+
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--green); }
+
+  .nav-cta {
+    background: var(--green);
+    color: white !important;
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--green-dark) !important; }
+
+  .nav-mobile-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--green);
+    font-size: 1.5rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 5% 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--amber-light);
+    border: 1px solid #f8d591;
+    color: #8a5c0a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-badge-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--amber);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--text);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero h1 span { color: var(--green); }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+
+  .hero-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .hero-form input[type="email"] {
+    flex: 1;
+    min-width: 220px;
+    padding: 13px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+    color: var(--text);
+  }
+
+  .hero-form input[type="email"]:focus { border-color: var(--green); }
+
+  .btn-primary {
+    background: var(--green);
+    color: white;
+    padding: 13px 22px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .hero-note {
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ── HERO VISUAL ── */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .phone-mockup {
+    width: 260px;
+    background: #1a1a2e;
+    border-radius: 36px;
+    padding: 12px;
+    box-shadow: 0 32px 80px rgba(27,107,74,0.25), 0 8px 24px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 2;
+  }
+
+  .phone-screen {
+    background: #f0f4f0;
+    border-radius: 26px;
+    overflow: hidden;
+    min-height: 480px;
+  }
+
+  .phone-status-bar {
+    background: var(--green);
+    padding: 10px 16px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .phone-app-name {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .phone-icons {
+    display: flex;
+    gap: 4px;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .chat-area {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .chat-date {
+    text-align: center;
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin: 4px 0;
+  }
+
+  .chat-bubble {
+    max-width: 78%;
+    padding: 8px 12px;
+    border-radius: 16px;
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+
+  .chat-bubble.sent {
+    background: var(--green);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  .chat-bubble.received {
+    background: white;
+    color: var(--text);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  .chat-bubble .meta {
+    font-size: 0.58rem;
+    opacity: 0.7;
+    margin-top: 3px;
+    text-align: right;
+  }
+
+  .phone-dashboard {
+    margin: 8px 12px;
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .dashboard-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .device-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .device-row:last-child { border-bottom: none; }
+
+  .device-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .device-dot.online { background: #22c55e; }
+  .device-dot.away { background: var(--amber); }
+
+  .device-info { flex: 1; }
+
+  .device-name {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .device-sub {
+    font-size: 0.58rem;
+    color: var(--muted);
+  }
+
+  .device-badge {
+    font-size: 0.55rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--green-light);
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .floating-card {
+    position: absolute;
+    background: white;
+    border-radius: 14px;
+    padding: 10px 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 3;
+    font-weight: 500;
+  }
+
+  .floating-card.card-1 {
+    top: 30px;
+    right: -20px;
+    color: var(--green);
+    border-left: 3px solid var(--green);
+  }
+
+  .floating-card.card-2 {
+    bottom: 40px;
+    left: -30px;
+    color: #8a5c0a;
+    border-left: 3px solid var(--amber);
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--green-light);
+    border-top: 1px solid #c8e6d6;
+    border-bottom: 1px solid #c8e6d6;
+    padding: 20px 5%;
+  }
+
+  .trust-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--green-dark);
+    font-weight: 500;
+  }
+
+  .trust-icon {
+    font-size: 1.1rem;
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 80px 5%; }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+
+  .section-label.amber {
+    background: var(--amber-light);
+    color: #8a5c0a;
+  }
+
+  .section-heading {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 14px;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 48px;
+  }
+
+  /* ── FEATURES ── */
+  #features { background: white; }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .feature-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .feature-card:hover {
+    box-shadow: 0 8px 32px rgba(27,107,74,0.1);
+    transform: translateY(-3px);
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .feature-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .feature-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── HOW IT WORKS ── */
+  #how-it-works { background: var(--bg); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 16px;
+  }
+
+  .step {
+    position: relative;
+    text-align: center;
+    padding: 32px 20px;
+  }
+
+  .step-number {
+    width: 52px;
+    height: 52px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 auto 18px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .step-connector {
+    position: absolute;
+    top: 58px;
+    left: calc(50% + 26px);
+    width: calc(100% - 52px);
+    height: 2px;
+    background: linear-gradient(to right, var(--green), var(--amber));
+    opacity: 0.3;
+  }
+
+  .step:last-child .step-connector { display: none; }
+
+  .step-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── WHY AMANLY ── */
+  #why { background: white; }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .why-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .why-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .why-icon-wrap.green { background: var(--green-light); }
+  .why-icon-wrap.amber { background: var(--amber-light); }
+
+  .why-item-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .why-item-desc {
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .why-visual {
+    background: linear-gradient(135deg, var(--green-light) 0%, #d4ede1 100%);
+    border-radius: 24px;
+    padding: 40px 32px;
+    text-align: center;
+  }
+
+  .founder-note {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(27,107,74,0.1);
+    text-align: left;
+  }
+
+  .founder-note-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--green);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .founder-note-text {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  .founder-sig {
+    margin-top: 16px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .founder-sig::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--green);
+  }
+
+  /* ── PRICING ── */
+  #pricing { background: var(--bg); }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 16px;
+  }
+
+  .pricing-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 32px 28px;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+
+  .pricing-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+
+  .pricing-card.featured {
+    border-color: var(--green);
+    box-shadow: 0 8px 32px rgba(27,107,74,0.15);
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+  }
+
+  .pricing-plan {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .pricing-card.featured .pricing-plan { color: var(--green); }
+
+  .pricing-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pricing-price sup {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    vertical-align: top;
+    margin-top: 8px;
+    display: inline-block;
+  }
+
+  .pricing-period {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .pricing-note {
+    font-size: 0.78rem;
+    color: var(--green);
+    font-weight: 600;
+    background: var(--green-light);
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .pricing-features li {
+    font-size: 0.875rem;
+    color: var(--text);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .pricing-features li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pricing-features li.dim {
+    color: var(--muted);
+  }
+
+  .pricing-features li.dim::before {
+    color: #cbd5e1;
+  }
+
+  .btn-outline {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid var(--green);
+    background: transparent;
+    color: var(--green);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover {
+    background: var(--green);
+    color: white;
+  }
+
+  .btn-primary-full {
+    width: 100%;
+    padding: 12px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+  }
+
+  .btn-primary-full:hover { background: var(--green-dark); }
+
+  .pricing-footer-note {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  /* ── FAQ ── */
+  #faq { background: white; }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 18px 22px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.15s;
+  }
+
+  .faq-question:hover { background: var(--bg); }
+
+  .faq-question.open { background: var(--green-light); color: var(--green); }
+
+  .faq-chevron {
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    color: var(--muted);
+  }
+
+  .faq-question.open .faq-chevron { transform: rotate(180deg); color: var(--green); }
+
+  .faq-answer {
+    display: none;
+    padding: 0 22px 18px;
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .faq-answer.open { display: block; }
+
+  /* ── SIGNUP CTA ── */
+  #signup {
+    background: linear-gradient(135deg, var(--green) 0%, #144f37 100%);
+    padding: 80px 5%;
+    text-align: center;
+  }
+
+  #signup .section-inner { max-width: 640px; }
+
+  #signup h2 {
+    color: white;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    margin-bottom: 14px;
+  }
+
+  #signup p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    margin-bottom: 36px;
+    line-height: 1.6;
+  }
+
+  .cta-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cta-form input[type="email"] {
+    flex: 1;
+    min-width: 240px;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(4px);
+  }
+
+  .cta-form input[type="email"]::placeholder { color: rgba(255,255,255,0.6); }
+  .cta-form input[type="email"]:focus { border-color: var(--amber); }
+
+  .btn-amber {
+    background: var(--amber);
+    color: #1a1a1a;
+    padding: 14px 26px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+  }
+
+  .btn-amber:hover { background: #e89310; transform: translateY(-1px); }
+
+  .cta-micro {
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .cta-micro span { display: flex; align-items: center; gap: 5px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0f3d29;
+    color: rgba(255,255,255,0.7);
+    padding: 48px 5% 32px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+    max-width: 280px;
+  }
+
+  .footer-lang-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .footer-col-title {
+    color: white;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 16px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: white; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.8rem;
+  }
+
+  .powered-by a {
+    color: var(--amber);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+  }
+
+  .powered-by a:hover { opacity: 0.8; }
+
+  /* ── JS PROGRESSIVE ENHANCEMENT ── */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .js .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      text-align: center;
+    }
+
+    .hero-desc { margin-left: auto; margin-right: auto; }
+    .hero-form { justify-content: center; }
+    .hero-note { justify-content: center; }
+
+    .hero-visual { order: -1; }
+
+    .floating-card.card-1 { right: 0; }
+    .floating-card.card-2 { left: 0; }
+
+    .features-grid { grid-template-columns: 1fr 1fr; }
+
+    .steps-grid { grid-template-columns: 1fr; gap: 24px; }
+    .step-connector { display: none; }
+
+    .why-grid { grid-template-columns: 1fr; }
+
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+
+    .faq-grid { grid-template-columns: 1fr; }
+
+    .footer-top { grid-template-columns: 1fr 1fr; }
+
+    .nav-links { display: none; }
+    .nav-mobile-btn { display: block; }
+  }
+
+  @media (max-width: 600px) {
+    .features-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .phone-mockup { width: 220px; }
+    .floating-card { font-size: 0.7rem; padding: 8px 10px; }
+    .floating-card.card-1 { right: -10px; top: 10px; }
+    .floating-card.card-2 { left: -10px; bottom: 20px; }
+    section { padding: 60px 5%; }
+    .hero { padding: 48px 5% 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" aria-label="Amanly Home">
+    <div class="nav-logo-mark">A</div>
+    <span class="nav-logo-text">Amanly</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#signup" class="nav-cta">Get Early Access</a></li>
+  </ul>
+  <button class="nav-mobile-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex';document.querySelector('.nav-links').style.flexDirection='column';document.querySelector('.nav-links').style.position='absolute';document.querySelector('.nav-links').style.top='64px';document.querySelector('.nav-links').style.left='0';document.querySelector('.nav-links').style.right='0';document.querySelector('.nav-links').style.background='white';document.querySelector('.nav-links').style.padding='16px 5%';document.querySelector('.nav-links').style.borderBottom='1px solid #e2e8f0';document.querySelector('.nav-links').style.zIndex='99';">
+    ☰
+  </button>
+</nav>
+
+<!-- HERO -->
+<section style="padding: 0; background: white;">
+  <div class="hero">
+    <!-- Copy -->
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Early Access Open · Africa &amp; Middle East
+      </div>
+      <h1>
+        Stay close to your kids<br>
+        <span>without crossing lines.</span>
+      </h1>
+      <p class="hero-desc">
+        Amanly combines family messaging and transparent device management in one app — built on consent, not surveillance. Know your children are safe. Let them know you care.
+      </p>
+      <form class="hero-form">
+        <input type="email" placeholder="Enter your email address" required aria-label="Email address">
+        <button type="submit" class="btn-primary">Get Early Access →</button>
+      </form>
+      <p class="hero-note">
+        🔒 No credit card. Cancel anytime. Your data stays private.
+      </p>
+    </div>
+
+    <!-- Visual -->
+    <div class="hero-visual">
+      <div class="floating-card card-1">🟢 Layla is online</div>
+      <div class="floating-card card-2">🔐 Consent active</div>
+
+      <div class="phone-mockup" role="img" aria-label="Amanly app preview">
+        <div class="phone-screen">
+          <div class="phone-status-bar">
+            <span class="phone-app-name">Amanly</span>
+            <div class="phone-icons">📶 🔋</div>
+          </div>
+
+          <div class="chat-area">
+            <div class="chat-date">Today</div>
+            <div class="chat-bubble received">
+              Mama, I'm at school 📚
+              <div class="meta">9:02 AM ✓✓</div>
+            </div>
+            <div class="chat-bubble sent">
+              Great! Home by 4pm? 💚
+              <div class="meta">9:04 AM ✓✓</div>
+            </div>
+            <div class="chat-bubble received">
+              Yes! Can I invite Fatima?
+              <div class="meta">9:05 AM ✓</div>
+            </div>
+            <div class="chat-bubble sent">
+              Of course 😊 See you soon!
+              <div class="meta">9:06 AM ✓✓</div>
+            </div>
+          </div>
+
+          <div class="phone-dashboard">
+            <div class="dashboard-title">📱 Family Devices</div>
+            <div class="device-row">
+              <div class="device-dot online"></div>
+              <div class="device-info">
+                <div class="device-name">Layla's Phone</div>
+                <div class="device-sub">Last sync: just now</div>
+              </div>
+              <div class="device-badge">Active</div>
+            </div>
+            <div class="device-row">
+              <div class="device-dot away"></div>
+              <div class="device-info">
+                <div class="device-name">Omar's Tablet</div>
+                <div class="device-sub">Last sync: 12 min ago</div>
+              </div>
+              <div class="device-badge">Away</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="trust-icon">🛡️</span> Permission-first by design</div>
+    <div class="trust-item"><span class="trust-icon">🌍</span> Arabic &amp; English support</div>
+    <div class="trust-item"><span class="trust-icon">💬</span> Real-time family messaging</div>
+    <div class="trust-item"><span class="trust-icon">📵</span> No ads. No data selling.</div>
+    <div class="trust-item"><span class="trust-icon">💵</span> Affordable family pricing</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-label">Platform Features</div>
+    <h2 class="section-heading">Everything a connected family needs</h2>
+    <p class="section-sub">Six core tools, one unified app — designed for everyday family life across Africa and the Middle East.</p>
+
+    <div class="features-grid">
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">💬</span>
+        <div class="feature-title">Family Chat</div>
+        <p class="feature-desc">Real-time messaging with text, photos, and file sharing in a clean WhatsApp-style interface. Stay connected with your family effortlessly.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">📱</span>
+        <div class="feature-title">Device Dashboard</div>
+        <p class="feature-desc">A clear overview of all linked family devices, showing connection status, storage info, and activity summaries at a glance.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">🖼️</span>
+        <div class="feature-title">Transparent File Browsing</div>
+        <p class="feature-desc">With explicit consent from the linked device user, browse and review photos and videos stored on family members' devices for safety oversight.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">🔐</span>
+        <div class="feature-title">Permission-First Security</div>
+        <p class="feature-desc">Every device link requires mutual consent and clear on-device indicators. Built on trust, not surveillance — fully compliant with app store policies and privacy laws.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">🔄</span>
+        <div class="feature-title">Real-Time Sync</div>
+        <p class="feature-desc">Device data updates in real-time via WebSockets or on-demand, so parents always have current information without draining battery life.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <span class="feature-icon">🌍</span>
+        <div class="feature-title">Multi-Language Support</div>
+        <p class="feature-desc">Full Arabic and English support with RTL interface, designed from the ground up for users across Africa and the Middle East.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-inner">
+    <div class="section-label amber">How It Works</div>
+    <h2 class="section-heading">Set up in minutes. Connected for good.</h2>
+    <p class="section-sub">No technical expertise needed. Amanly is designed to be simple, transparent, and respectful of everyone in the family.</p>
+
+    <div class="steps-grid">
+
+      <div class="step reveal">
+        <div class="step-connector"></div>
+        <div class="step-number">1</div>
+        <div class="step-title">Parent creates a family account</div>
+        <p class="step-desc">Sign up with your email, choose your language (English or Arabic), and create your family profile. Takes under two minutes.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-connector"></div>
+        <div class="step-number">2</div>
+        <div class="step-title">Children accept the invitation</div>
+        <p class="step-desc">Your child receives an invite, installs the Amanly app, and explicitly accepts the connection. A visible indicator on their device confirms the link — no hidden monitoring.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-number">3</div>
+        <div class="step-title">Stay connected &amp; informed</div>
+        <p class="step-desc">Chat, check device status, and review files — all with full transparency. Your child always knows what's shared. You always know they're safe.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY AMANLY -->
+<section id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+
+      <div>
+        <div class="section-label">Why Amanly</div>
+        <h2 class="section-heading">Digital parenting that respects your values</h2>
+        <p class="section-sub" style="margin-bottom: 32px;">Most parental control apps are built for Western markets and feel like surveillance tools. Amanly is different.</p>
+
+        <div class="why-list">
+
+          <div class="why-item reveal">
+            <div class="why-icon-wrap green">🤝</div>
+            <div>
+              <div class="why-item-title">Trust over surveillance</div>
+              <p class="why-item-desc">Every feature is visible to your child. No hidden tracking. This builds long-term trust and open communication — not resentment.</p>
+            </div>
+          </div>
+
+          <div class="why-item reveal">
+            <div class="why-icon-wrap amber">🌐</div>
+            <div>
+              <div class="why-item-title">Built for your culture</div>
+              <p class="why-item-desc">Full Arabic RTL support, culturally familiar communication patterns, and pricing designed for African and Middle Eastern household budgets.</p>
+            </div>
+          </div>
+
+          <div class="why-item reveal">
+            <div class="why-icon-wrap green">📲</div>
+            <div>
+              <div class="why-item-title">One app, not five</div>
+              <p class="why-item-desc">Chat, device management, and file review — all in one place. No juggling between a messenger, a parental control app, and a dashboard.</p>
+            </div>
+          </div>
+
+          <div class="why-item reveal">
+            <div class="why-icon-wrap amber">⚡</div>
+            <div>
+              <div class="why-item-title">Light on data &amp; battery</div>
+              <p class="why-item-desc">Designed for real-world connectivity in Africa and the Middle East — efficient data usage and smart sync that doesn't drain devices.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="why-visual reveal">
+        <div class="founder-note">
+          <div class="founder-note-label">✉️ A note from our founder</div>
+          <p class="founder-note-text">
+            "I built Amanly because I couldn't find a family safety app that felt right for families like mine. Every option was either too invasive, too expensive, or didn't support Arabic. Families in our part of the world deserve tools built with their values in mind — tools that connect rather than control. That's what Amanly is."
+          </p>
+          <div class="founder-sig">The Amanly Team</div>
+        </div>
+
+        <div style="margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div style="background: white; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(27,107,74,0.08);">
+            <div style="font-size: 1.6rem; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--green);">8–17</div>
+            <div style="font-size: 0.75rem; color: var(--muted); margin-top: 4px;">Target child age range</div>
+          </div>
+          <div style="background: white; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(27,107,74,0.08);">
+            <div style="font-size: 1.6rem; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--amber);">2</div>
+            <div style="font-size: 0.75rem; color: var(--muted); margin-top: 4px;">Languages from launch</div>
+          </div>
+          <div style="background: white; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(27,107,74,0.08);">
+            <div style="font-size: 1.6rem; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--green);">100%</div>
+            <div style="font-size: 0.75rem; color: var(--muted); margin-top: 4px;">Consent-based linking</div>
+          </div>
+          <div style="background: white; border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 10px rgba(27,107,74,0.08);">
+            <div style="font-size: 1.6rem; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--amber);">0</div>
+            <div style="font-size: 0.75rem; color: var(--muted); margin-top: 4px;">Ads or data selling</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Simple Pricing</div>
+    <h2 class="section-heading">Transparent plans. No surprises.</h2>
+    <p class="section-sub">Affordable pricing designed for families in Africa and the Middle East. Early access members lock in founding rates.</p>
+
+    <div class="pricing-grid">
+
+      <!-- Free -->
+      <div class="pricing-card reveal">
+        <div class="pricing-plan">Starter</div>
+        <div class="pricing-price"><sup>$</sup>0</div>
+        <div class="pricing-period">Free forever</div>
+        <ul class="pricing-features">
+          <li>Family chat (up to 4 members)</li>
+          <li>1 linked child device</li>
+          <li>Basic device status</li>
+          <li>English &amp; Arabic interface</li>
+          <li class="dim">File browsing</li>
+          <li class="dim">Real-time sync</li>
+          <li class="dim">Priority support</li>
+        </ul>
+        <button class="btn-outline" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Start Free</button>
+      </div>
+
+      <!-- Family -->
+      <div class="pricing-card featured reveal">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-plan">Family</div>
+        <div class="pricing-price"><sup>$</sup>4<span style="font-size:1.2rem;">.99</span></div>
+        <div class="pricing-period">per month, billed monthly</div>
+        <div class="pricing-note">Early access pricing — locks in for life</div>
+        <ul class="pricing-features">
+          <li>Family chat (unlimited members)</li>
+          <li>Up to 5 linked devices</li>
+          <li>Full device dashboard</li>
+          <li>Transparent file browsing</li>
+          <li>Real-time sync</li>
+          <li>English &amp; Arabic + RTL</li>
+          <li class="dim">Business device management</li>
+        </ul>
+        <button class="btn-primary-full" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
+      </div>
+
+      <!-- Business -->
+      <div class="pricing-card reveal">
+        <div class="pricing-plan">Business</div>
+        <div class="pricing-price"><sup>$</sup>12</div>
+        <div class="pricing-period">per month, up to 10 devices</div>
+        <ul class="pricing-features">
+          <li>Everything in Family plan</li>
+          <li>Up to 10 managed devices</li>
+          <li>Employee device dashboard</li>
+          <li>Admin access controls</li>
+          <li>Priority email support</li>
+          <li>Onboarding assistance</li>
+          <li>Usage &amp; activity reports</li>
+        </ul>
+        <button class="btn-outline" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Contact Us</button>
+      </div>
+
+    </div>
+
+    <p class="pricing-footer-note">
+      All plans include a 14-day free trial. No credit card required to start. Cancel or change plans anytime.
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label amber">Common Questions</div>
+    <h2 class="section-heading">Honest answers to real concerns</h2>
+    <p class="section-sub" style="margin-bottom: 40px;">We know parents and kids both have questions about an app like this. Here's the straight truth.</p>
+
+    <div class="faq-grid">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can my child see that they're being monitored?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          Yes — always. Amanly is built on transparency. When a device is linked, a persistent indicator appears on your child's device. There is no hidden or secret monitoring. This is intentional: we believe that open awareness builds healthier family relationships than covert surveillance.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What happens if my child declines the device link?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          The link simply won't be established. Amanly requires explicit, on-device acceptance from the child's device before any connection is made. Parents cannot force a connection without the child's device physically accepting the invite. This is a core design principle, not an afterthought.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is Amanly available on both Android and iOS?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          We are building for both Android and iOS. Early access members will be among the first to receive download links when we launch. Join the waitlist and we'll notify you the moment the app is live on your platform.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Does it work in areas with slow or limited internet?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          Absolutely — this was a core design requirement. Amanly is optimised for lower-bandwidth connections common across Africa and the Middle East. Sync is intelligent: it prioritises important updates and avoids unnecessary data use. Chat messages are also lightweight by default.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Who can see my family's data?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          Only you and the family members you invite. Amanly does not sell your data to advertisers, share it with third parties, or use it to train AI models. Your family's conversations and device data belong to your family. We earn revenue through subscriptions, not data.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can businesses use Amanly to manage employee devices?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          Yes. Our Business plan is designed for small businesses in emerging markets who need a simple, affordable way to oversee company devices. The same consent-first principles apply — employees are clearly informed of what is monitored on work devices, keeping everything above board.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is the interface available in Arabic?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          Yes, fully. Amanly is built with Arabic as a first-class language — not an afterthought translation. The entire interface switches to RTL (right-to-left) layout in Arabic mode, making it feel natural for Arabic-speaking users across the Middle East and North Africa.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          When is the app launching?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          We're currently in early access. By joining the waitlist, you'll get priority access when we open the app to the public, plus the opportunity to provide feedback that shapes the product. Early access members who join now will lock in founding member pricing.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA SIGNUP -->
+<section id="signup">
+  <div class="section-inner">
+    <h2>Ready to connect your family?</h2>
+    <p>Join the early access waitlist. Be among the first families in Africa and the Middle East to experience digital safety built on trust — not surveillance.</p>
+
+    <form class="cta-form">
+      <input type="email" placeholder="Your email address" required aria-label="Email address">
+      <button type="submit" class="btn-amber">Join the Waitlist →</button>
+    </form>
+
+    <div class="cta-micro">
+      <span>🔒 No credit card required</span>
+      <span>📩 No spam, ever</span>
+      <span>🌍 Arabic &amp; English support</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+
+      <div>
+        <div class="footer-brand-name">Amanly</div>
+        <p class="footer-tagline">Your family's digital safety, connected. Built for families across Africa and the Middle East who believe in trust, not surveillance.</p>
+        <div class="footer-lang-badge">🌍 English · العربية</div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Product</div>
+        <ul class="footer-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#why">Why Amanly</a></li>
+          <li><a href="#signup">Early Access</a></li>
+          <li><a href="mailto:hello@amanly.app">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div style="font-size: 0.8rem;">© <span class="year"></span> Amanly. All rights reserved.</div>
+      <div class="powered-by">Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a></div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  // Progressive enhancement class
+  document.documentElement.classList.add('js');
+</script>
+
+<script>
+  // FAQ accordion
+  function toggleFaq(btn) {
+    var answer = btn.nextElementSibling;
+    var isOpen = btn.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-question').forEach(function(q) {
+      q.classList.remove('open');
+      q.nextElementSibling.classList.remove('open');
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+</script>
+
+<script>
+  // Scroll reveal
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(function(el) {
+    observer.observe(el);
+  });
+</script>
+
+<script>
+  // Copyright year
+  document.querySelectorAll('.year').forEach(function(e) {
+    e.textContent = new Date().getFullYear();
+  });
+</script>
+
+<script>
+  // Form submissions
+  document.querySelectorAll('form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = form.querySelector('input[type="email"]').value;
+      fetch('https://api.madmantra.app/api/landing/amanly/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: email})
+      }).then(function() {
+        form.innerHTML = '<p style="padding:12px;color:green;font-weight:600">Thanks! We will be in touch.</p>';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
